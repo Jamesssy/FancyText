@@ -114,6 +114,12 @@
             alert("Du raderar nu raden med id: "+rowId)
             $(this).parents(".row").remove();
         });
+
+        $("body").on("keyup", ".fancy-text", function () {
+            console.log("du ändrade en text");
+        });
+
+
         $("body").on("click", ".fancy-add", function () {
             //$(this).parents(".fancy-list").add(".fancy-list");
 
