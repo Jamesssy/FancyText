@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <style>
+        /*.fancy-list{
+            background-color: red;
+
+        }*/
+
+
+        .col-xs-4 {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="fancy-list">
+        <div class="row" id="1">
+
+            <input type="hidden" class="fancy-id" value="99" />
+
+            <div class="col-xs-4">
+                <button class="fancy-delete" width="50px">Remove Row</button>
+            </div>
+
+            <div class="col-xs-4 backgroundText">
+                <input type="text" class="fancy-text" />
+            </div>
+
+            <div class="col-xs-4">
+                <select class="fancy-select">
+                    <option value="0">Transparent</option>
+                    <option value="1">Yellow</option>
+                    <option value="2">Pink</option>
+                    <option value="3">Green</option>
+                    <option value="4">Blue</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" id="2">
+
+            <input type="hidden" class="fancy-id" value="99" />
+
+            <div class="col-xs-4">
+                <button class="fancy-delete" width="50px">Remove Row</button>
+            </div>
+
+            <div class="col-xs-4 backgroundText">
+                <input type="text" class="fancy-text" />
+            </div>
+
+            <div class="col-xs-4">
+                <select class="fancy-select">
+                    <option value="0">Transparent</option>
+                    <option value="1">Yellow</option>
+                    <option value="2">Pink</option>
+                    <option value="3">Green</option>
+                    <option value="4">Blue</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4">
+        <button class="fancy-add" width="50px">Add row</button>
+    </div>
+
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="js/site.js"></script>
+    <script>
+
+        //$(".fancy-list").on("change", ".fancy-select", function () {
+        //    var selectedValue = $(this).val();
+
+
+        //    if (selectedValue == 1)
+        //        $((this), ".backgroundText").css("background-color", "Yellow");
+        //    else if (selectedValue == 2)
+        //        $((this).backgroundText).css("background-color", "Pink");
+        //    else if (selectedValue == 3)
+        //        $((this).backgroundText).css("background-color", "Green");
+        //    else if (selectedValue == 4)
+        //        $((this).backgroundText).css("background-color", "Blue");
+        //    else
+        //        $((this),"backgroundText").css("background-color", "Transparent");
+        //});
+
+        $(".fancy-list").on("change", ".fancy-select", function () {
+            var selectedValue = $(this).val();
+
+
+            if (selectedValue == 1)
+                $(this).parents(".row").find(".backgroundText").css("background-color", "Yellow");
+            else if (selectedValue == 2)
+                $(this).parents(".row").find(".backgroundText").css("background-color", "Pink");
+            else if (selectedValue == 3)
+                $(this).parents(".row").find(".backgroundText").css("background-color", "Green");
+            else if (selectedValue == 4)
+                $(this).parents(".row").find(".backgroundText").css("background-color", "Blue");
+            else
+                $(this).parents(".row").find(".backgroundText").css("background-color", "Transparent");
+        });
+
+
+        $("body").on("click", ".fancy-delete", function () {
+            var rowId = $(this).parents(".row").attr("id");
+
+            alert("Du raderar nu raden med id: "+rowId)
+            $(this).parents(".row").remove();
+        });
+        $("body").on("click", ".fancy-add", function () {
+            //$(this).parents(".fancy-list").add(".fancy-list");
+
+            var template = `
+                <div class="row">
+
+                    <input type="hidden" class="fancy-id" value="99" />
+
+                    <div class="col-xs-4">
+                        <button class="fancy-delete" width="50px">Remove Row</button>
+                    </div>
+
+                    <div class="col-xs-4 backgroundText">
+                        <input type="text" class="fancy-text" />
+                    </div>
+
+                    <div class="col-xs-4">
+                        <select class="fancy-select">
+                            <option value="0">Transparent</option>
+                            <option value="1">Yellow</option>
+                            <option value="2">Pink</option>
+                            <option value="3">Green</option>
+                            <option value="4">Blue</option>
+                        </select>
+                    </div>
+                </div>`;
+
+            $(".fancy-list").append(template);
+        });
+
+    </script>
+
+</body>
+
+
+
+</html>
+
